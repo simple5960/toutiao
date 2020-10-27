@@ -1,6 +1,6 @@
 <template>
 <div id="app">
-    <h2>Simple</h2>
+    <!-- 一级路由渲染 -->
     <router-view />
 </div>
 </template>
