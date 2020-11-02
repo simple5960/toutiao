@@ -3,7 +3,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import {getItem,setItem,removeItem} from '@/utils/storage'
 Vue.use(Vuex)
-const user_key=userToken
+const user_key='userToken'
 export default new Vuex.Store({
   state: {
     //当前用户的登录状态(token等数据)
