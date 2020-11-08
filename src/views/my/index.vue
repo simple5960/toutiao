@@ -82,7 +82,7 @@ export default {
                 data
             } = await getCurrentUser()
             this.currentUser = data.data
-            console.log(data);
+            //console.log(data);
         },
         onLogout() {
             //退出登陆状态，提示用户确认退出

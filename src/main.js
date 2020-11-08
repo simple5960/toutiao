@@ -13,6 +13,7 @@ Vue.use(Vant);
 //引入动态设置的rem基准值
 import 'amfe-flexible' //其实是加载的node_moudles中amfe-flexible的index.js文件
 Vue.config.productionTip = false
+import dayjs from './utils/dayjs'
 
 new Vue({
   router,
