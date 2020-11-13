@@ -30,7 +30,6 @@ import {
 import {
     setItem
 } from '@/utils/storage'
-
 export default {
     name: "ChannelEdit",
     props: {
