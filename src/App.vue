@@ -1,10 +1,21 @@
 <template>
 <div id="app">
     <!-- 一级路由渲染 -->
-    <router-view />
+    <keep-alive :include="cachePages">
+        <router-view />
+    </keep-alive>
+
 </div>
 </template>
-
+<script>
+import {mapState} from 'vuex'
+export default {
+    name:'App',
+    computed:{
+        ...mapState(['cachePages'])
+    }
+}
+</script>
 <style lang="less" scoped>
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;

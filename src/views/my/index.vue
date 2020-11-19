@@ -46,7 +46,7 @@
         <van-grid-item class="navGridItem" icon="browsing-history-o" text="历史" />
     </van-grid>
     <van-cell value="消息通知" is-link url="" />
-    <van-cell value="小智同学" is-link to="" />
+    <van-cell value="聊天机器人" is-link to="/user/chat" />
     <!---  v-if="user"如果有登录信息就显示下面这个，如果没有就不显示 --->
     <van-cell class="exitLogin" v-if="user" title="退出登录" @click="onLogout" />
 </div>

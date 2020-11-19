@@ -8,8 +8,8 @@ export default new Vuex.Store({
   state: {
     //当前用户的登录状态(token等数据)
     //因为在本地存储中存的是字符串，需要把它转换成为对象
-    user:getItem(user_key)
-    
+    user:getItem(user_key),
+    cachePages:['layoutIndex']
   },
   mutations: {
     setUser(state,data)
@@ -19,6 +19,20 @@ export default new Vuex.Store({
       //因为对象不能存放再本地存储中，所以要把对象转换成为字符串再存
       //当然直接写data就省去了这一步
       setItem(user_key,state.user)
+    },
+    //添加混村页面
+    addCachePage(state,pageName){
+        if(!state.cachePages.includes(pageName)){
+          state.cachePages.push(pageName)
+        }
+    },
+    //移除缓存页面
+    removeCachePage(state,pageName){
+      const index=state.cachePages.indexOf(pageName)
+      if(index!==-1)
+      {
+        state.cachePages.splice(index,1)
+      }
     }
   },
   actions: {

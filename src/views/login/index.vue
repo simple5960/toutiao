@@ -111,9 +111,16 @@ export default {
                 this.$store.commit('setUser', data.data)
                 //返回的token为访问令牌，有效期两个小时---设置短时间是为了安全，防止token被盗用
                 //refresh_token为刷新令牌，有效期14天。用于访问令牌过期后获取新的访问令牌
+                
+
+                /**
+                 * 清除layout缓存，让它重新渲染
+                 */
+                this.$store.commit('removeCachePage','layoutIndex')
 
                 //登录成功跳转回原来页面
-                this.$router.back()
+                //this.$router.back()
+                this.$router.push(this.$route.query.redirect || '/')
             } catch (err) {
                 Toast.fail("登录失败")
                 console.log("登陆失败", err)

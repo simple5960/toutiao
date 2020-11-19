@@ -1,7 +1,10 @@
 <template>
 <div class="layoutContainer">
     <!-- 子路由出口 -->
-    <router-view></router-view>
+    <keep-alive>
+            <router-view></router-view>
+    </keep-alive>
+    
     <!-- 底部导航栏 -->
     <!-- 给tabbar--route属性  然后给每一项to属性就可以路由跳转了 -->
     <van-tabbar v-model="active" route>
@@ -20,7 +23,10 @@ export default {
         return {
             active: 0
         }
-    }
+    },
+    mounted() {
+        this.$store.commit('addCachePage','layoutIndex')
+    },
 }
 </script>
 

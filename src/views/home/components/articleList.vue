@@ -1,5 +1,5 @@
 <template>
-<div class="articleList">
+<div class="articleList" ref="articleList">
     <van-pull-refresh v-model="isPullDownLoading" @refresh="onRefresh" :success-text="pullDownSuccess" :success-duration="1500">
         <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
             <articleItem v-for="(article,index) in articles" :key="index" :article="article"></articleItem>
@@ -14,6 +14,7 @@ import {
     getArticle
 } from '@/api/article'
 import articleItem from '@/components/article-item'
+import {debounce} from 'loadsh'
 export default {
     name: "ArticleList",
     components: {
@@ -32,8 +33,23 @@ export default {
             finished: false,
             timestamp: null, //获取下一页数据的时间戳
             isPullDownLoading: false, //下拉刷新的loading状态
-            pullDownSuccess: '' //下拉刷新成功提示
+            pullDownSuccess: '', //下拉刷新成功提示
+            scrollTop:0//列表距离顶部的距离
         }
+    },
+    mounted() {
+        //监听滚动事件
+        const articleList=this.$refs['articleList']
+        articleList.onscroll=debounce(()=>{
+                this.scrollTop=articleList.scrollTop
+        },50)
+    },
+    activated() {
+        //从缓存中被激活
+        this.$refs['articleList'].scrollTop=this.scrollTop
+    },
+    deactivated() {
+        //组件处于缓存状态
     },
     methods: {
         async onLoad() {

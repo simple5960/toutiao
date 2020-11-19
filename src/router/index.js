@@ -52,6 +52,11 @@ const routes = [
     path:"/user/profile",
     name:"userfile",
     component:()=>import("@/views/user-profile")
+  },
+  {
+    path:"/user/chat",
+    name:"user-chat",
+    component:()=>import("@/views/user-chat")
   }
 ]
 
